@@ -1,0 +1,63 @@
+.container {
+  position: relative;
+  width: 80%;
+}
+
+.card {
+  border-radius: 1rem;
+  cursor: pointer;
+  border: 2px solid #800000;
+  width: 100%;
+  padding: 1rem 1rem 3.8rem 1rem;
+  background-color: #1e1e1e;
+  color: transparent;
+  transition: all 0.3s;
+
+  box-shadow: 0 4px 8px rgba(128, 0, 0, 0.5);
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(128, 0, 0, 0.7);
+  border: 2px solid #5ebd78;
+  transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.position {
+  font-size: 1.5rem;
+  padding: 3rem 1rem 0rem 1rem;
+  text-align: center;
+}
+
+.button:hover {
+  color: #fff;
+  background-color: #565454;
+  border-color: white;
+  transition: all 0.3s;
+}
+
+.remove {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  right: -1rem;
+  top: -1.5rem;
+  font-size: 1.4rem;
+  border: #000 solid 2px;
+  border-radius: 50%;
+  background-color: #800000;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.remove:hover {
+  background-color: #cc0000;
+}

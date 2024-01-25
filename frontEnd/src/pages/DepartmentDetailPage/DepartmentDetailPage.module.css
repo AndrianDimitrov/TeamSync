@@ -1,0 +1,57 @@
+.container {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 4rem;
+}
+
+.title__box {
+  width: 100%;
+  height: 10rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 4.4rem;
+  font-weight: 700;
+}
+
+.description__box {
+  width: 100%;
+  margin: 8rem 8rem;
+}
+
+.description {
+  font-size: 3.6rem;
+}
+
+.add_employee_button {
+  position: fixed;
+  bottom: 10rem;
+  right: 10rem;
+  color: #1e1e1e;
+  background-color: transparent;
+  border-color: transparent;
+  width: 10%;
+  height: 5rem;
+}
+
+.employee_cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 2rem;
+  column-gap: 0;
+}
+.delete_department_button {
+  position: fixed;
+  bottom: 10rem;
+  left: 10rem;
+  color: #1e1e1e;
+  background-color: transparent;
+  border-color: transparent;
+  width: 10%;
+  height: 5rem;
+}

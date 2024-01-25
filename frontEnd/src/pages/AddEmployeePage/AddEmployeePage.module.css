@@ -1,0 +1,61 @@
+/* AddEmployeePage.module.css */
+
+.container {
+  width: 50rem;
+  height: auto;
+  margin: 4rem auto 0 auto;
+  background-color: #1e1e1e;
+  border-radius: 2rem;
+  padding: 4rem;
+  font-size: 1.8rem;
+  color: transparent;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.title {
+  margin-bottom: 2rem;
+  font-size: 3.2rem;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+.inputContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  letter-spacing: 1px;
+  font-size: 2.4rem;
+}
+
+.inputContainer input {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.button:hover {
+  background-color: #5ebd78;
+}
