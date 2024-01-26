@@ -1,8 +1,10 @@
 import React from "react";
 import "./AuthForm.css";
+import { useState } from "react";
 import email_icon from "../../assets/images/email.png";
 import password_icon from "../../assets/images/password.png";
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { login } from "../../services/auth";
 
 const AuthForm = ({
   title,
@@ -12,6 +14,14 @@ const AuthForm = ({
   promptButtonText,
   redirectUrl,
 }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
   return (
     <div className="formBody">
       <div className="container">
@@ -26,6 +36,8 @@ const AuthForm = ({
               className="imputField"
               type="email"
               placeholder="Email"
+              value={username}
+              onChange={handleUsernameChange}
             ></input>
           </div>
           <div className="input">
@@ -34,6 +46,8 @@ const AuthForm = ({
               className="imputField"
               type="password"
               placeholder="Password"
+              value={password}
+              onChange={handlePasswordChange}
             ></input>
           </div>
         </div>
@@ -50,7 +64,9 @@ const AuthForm = ({
           </Link>
         </div>
         <div className="submitContainer">
-          <div className="submit">{buttonText}</div>
+          <div className="submit" onClick={() => login(username, password)}>
+            {buttonText}
+          </div>
         </div>
       </div>
     </div>
