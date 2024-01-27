@@ -11,13 +11,6 @@ namespace TeamSync.DTOs
 
         public string? FullName { get; set; }  
 
-        [DataType(DataType.Password)]
-        [Compare(nameof(Password))]
-        [Required]
-
-        public string? ConfirmPassword { get; set; }    
-   
-
 
 
     }
