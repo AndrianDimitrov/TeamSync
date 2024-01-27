@@ -5,7 +5,7 @@ import email_icon from "../../assets/images/email.png";
 import person_icon from "../../assets/images/person.png";
 import password_icon from "../../assets/images/password.png";
 import { Link } from "react-router-dom";
-import { login } from "../../services/auth";
+import { login, signup } from "../../services/auth";
 
 const AuthForm = ({
   title,
@@ -15,10 +15,19 @@ const AuthForm = ({
   promptText,
   promptButtonText,
   redirectUrl,
+  onSubmit,
 }) => {
   const [fullname, setFullname] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const handleSubmit = () => {
+    if (!onSubmit) return;
+    if (buttonText === "Log in") {
+      onSubmit(username, password);
+    } else {
+      onSubmit(fullname, username, password);
+    }
+  };
   const handleFullnameChange = (event) => {
     setFullname(event.target.value);
   };
@@ -82,10 +91,7 @@ const AuthForm = ({
           </Link>
         </div>
         <div className="submitContainer">
-          <div
-            className="submit"
-            onClick={() => login(fullname, username, password)}
-          >
+          <div className="submit" onClick={handleSubmit}>
             {buttonText}
           </div>
         </div>

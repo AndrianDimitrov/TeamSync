@@ -1,6 +1,7 @@
 import React from "react";
 import "./LoginPage.css";
 import AuthForm from "../../components/AuthForm/AuthForm";
+import { login } from "../../services/auth";
 
 const LoginPage = () => {
   return (
@@ -12,6 +13,7 @@ const LoginPage = () => {
       promptText={"Don't have an account?"}
       promptButtonText={"Register!"}
       redirectUrl={"/sign-up"}
+      onSubmit={login}
     />
   );
 };
