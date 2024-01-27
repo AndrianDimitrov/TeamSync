@@ -2,6 +2,7 @@ import React from "react";
 import "./AuthForm.css";
 import { useState } from "react";
 import email_icon from "../../assets/images/email.png";
+import person_icon from "../../assets/images/person.png";
 import password_icon from "../../assets/images/password.png";
 import { Link } from "react-router-dom";
 import { login } from "../../services/auth";
@@ -9,18 +10,23 @@ import { login } from "../../services/auth";
 const AuthForm = ({
   title,
   buttonText,
+  hasFullname,
   hasForgottenPassword,
   promptText,
   promptButtonText,
   redirectUrl,
 }) => {
+  const [fullname, setFullname] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const handleFullnameChange = (event) => {
+    setFullname(event.target.value);
   };
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+  };
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
   };
   return (
     <div className="formBody">
@@ -30,6 +36,18 @@ const AuthForm = ({
           <div className="underline"></div>
         </div>
         <div className="inputs">
+          {hasFullname ? (
+            <div className="input">
+              <img className="imputIcon" src={person_icon} alt=""></img>
+              <input
+                className="imputField"
+                type="Full Name"
+                placeholder="Full Name"
+                value={fullname}
+                onChange={handleFullnameChange}
+              ></input>
+            </div>
+          ) : null}
           <div className="input">
             <img className="imputIcon" src={email_icon} alt=""></img>
             <input
@@ -64,7 +82,10 @@ const AuthForm = ({
           </Link>
         </div>
         <div className="submitContainer">
-          <div className="submit" onClick={() => login(username, password)}>
+          <div
+            className="submit"
+            onClick={() => login(fullname, username, password)}
+          >
             {buttonText}
           </div>
         </div>

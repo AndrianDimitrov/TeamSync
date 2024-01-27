@@ -7,6 +7,7 @@ const LoginPage = () => {
     <AuthForm
       title={"Log in"}
       buttonText={"Log in"}
+      hasFullname={false}
       hasForgottenPassword={true}
       promptText={"Don't have an account?"}
       promptButtonText={"Register!"}

@@ -7,6 +7,7 @@ const SignUpPage = () => {
     <AuthForm
       title={"Sign Up"}
       buttonText={"Sign Up"}
+      hasFullname={true}
       hasForgottenPassword={false}
       promptText={"Already have an account?"}
       promptButtonText={"Click here!"}

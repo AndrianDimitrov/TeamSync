@@ -1,3 +1,3 @@
-export const login = (username, password) => {
-  console.log(username, password);
+export const login = (fullname, username, password) => {
+  console.log(fullname, username, password);
 };
