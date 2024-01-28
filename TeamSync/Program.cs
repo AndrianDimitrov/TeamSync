@@ -51,7 +51,7 @@ builder.Services.AddCors(options =>
     });
 });
 builder.Services.Configure<JwtSection>(builder.Configuration.GetSection("JwtSection"));
-builder.Services.AddScoped<IUserAccount, UserAccountRepository>();
+builder.Services.AddScoped<IUserAccount, UserAccountService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

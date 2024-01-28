@@ -17,12 +17,12 @@ using Constants = TeamSync.Helpers.Constants;
 
 namespace ServerLibrary.Repositories.Implementations
 {
-   public class UserAccountRepository : IUserAccount
+   public class UserAccountService : IUserAccount
     {
         private readonly JwtSection _jwtConfig;
         private readonly TeamSyncDbContext _teamSyncDbContext;
 
-        public UserAccountRepository(IOptions<JwtSection> config, TeamSyncDbContext teamSyncDbContext)
+        public UserAccountService(IOptions<JwtSection> config, TeamSyncDbContext teamSyncDbContext)
         {
             _jwtConfig = config.Value;  // Here we're storing the JwtSection object
             _teamSyncDbContext = teamSyncDbContext;
@@ -134,7 +134,7 @@ namespace ServerLibrary.Repositories.Implementations
                 issuer: _jwtConfig.Issuer,
                 audience: _jwtConfig.Audience,
                 claims: userClaims,
-                expires: DateTime.Now.AddDays(1),
+                expires: DateTime.Now.AddHours(1),
                 signingCredentials : credentials
                 );
 
