@@ -12,6 +12,7 @@ const SignUpPage = () => {
       hasEmail={true}
       hasPassword={true}
       hasForgottenPassword={false}
+      passwordPlaceholder={"Password"}
       promptText={"Already have an account?"}
       promptButtonText={"Click here!"}
       redirectUrl={"/login"}

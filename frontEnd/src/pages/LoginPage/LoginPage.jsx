@@ -11,6 +11,7 @@ const LoginPage = () => {
       hasFullname={false}
       hasEmail ={true}
       hasPassword={true}
+      passwordPlaceholder={"Password"}
       hasForgottenPassword={true}
       promptText={"Don't have an account?"}
       promptButtonText={"Register!"}

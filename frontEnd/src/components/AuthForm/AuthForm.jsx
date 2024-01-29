@@ -14,6 +14,7 @@ const AuthForm = ({
   hasEmail,
   hasPassword,
   hasForgottenPassword,
+  passwordPlaceholder,
   promptText,
   promptButtonText,
   redirectUrl,
@@ -77,7 +78,7 @@ const AuthForm = ({
             <input
               className="imputField"
               type="password"
-              placeholder="Password"
+              placeholder={passwordPlaceholder}
               value={password}
               onChange={handlePasswordChange}
             ></input>
@@ -87,7 +88,11 @@ const AuthForm = ({
         {hasForgottenPassword ? (
           <div className="forgottenPassword">
             Forgotten password?
-            <span className="fieldSpan">Click Here!</span>
+
+            <Link to="/forgotten-password" className="fieldSpan">
+              Click Here!
+            </Link>
+
           </div>
         ) : null}
         <div className="register">

@@ -10,6 +10,7 @@ import DepartmentDetailPage from "./pages/DepartmentDetailPage/DepartmentDetailP
 import AddEmployeePage from "./pages/AddEmployeePage/AddEmployeePage";
 import AuthContext from "./store/AuthContext";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import ForgottenPasswordPage from "./pages/ForgottenPasswordPage/ForgottenPasswordPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="/forgotten-password" element={<ForgottenPasswordPage/>}/>
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     );
