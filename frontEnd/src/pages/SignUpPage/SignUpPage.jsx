@@ -9,6 +9,8 @@ const SignUpPage = () => {
       title={"Sign Up"}
       buttonText={"Sign Up"}
       hasFullname={true}
+      hasEmail={true}
+      hasPassword={true}
       hasForgottenPassword={false}
       promptText={"Already have an account?"}
       promptButtonText={"Click here!"}

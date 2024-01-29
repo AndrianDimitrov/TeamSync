@@ -11,6 +11,8 @@ const AuthForm = ({
   title,
   buttonText,
   hasFullname,
+  hasEmail,
+  hasPassword,
   hasForgottenPassword,
   promptText,
   promptButtonText,
@@ -57,6 +59,7 @@ const AuthForm = ({
               ></input>
             </div>
           ) : null}
+          { hasEmail ? (
           <div className="input">
             <img className="imputIcon" src={email_icon} alt=""></img>
             <input
@@ -66,7 +69,9 @@ const AuthForm = ({
               value={username}
               onChange={handleUsernameChange}
             ></input>
-          </div>
+          </div>) : null
+          }
+          {hasPassword ? (
           <div className="input">
             <img className="imputIcon" src={password_icon} alt=""></img>
             <input
@@ -76,7 +81,8 @@ const AuthForm = ({
               value={password}
               onChange={handlePasswordChange}
             ></input>
-          </div>
+          </div>) : null
+}
         </div>
         {hasForgottenPassword ? (
           <div className="forgottenPassword">

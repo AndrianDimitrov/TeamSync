@@ -4,3 +4,6 @@ export const login = (username, password) => {
 export const signup = (fullname, username, password) => {
   console.log("Sign up:", fullname, username, password);
 };
+export const forgotPassword = (newPassword, confirmPassword) =>{
+  console.log("Forgotten password:", newPassword,confirmPassword);
+}

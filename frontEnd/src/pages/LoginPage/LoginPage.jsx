@@ -9,6 +9,8 @@ const LoginPage = () => {
       title={"Log in"}
       buttonText={"Log in"}
       hasFullname={false}
+      hasEmail ={true}
+      hasPassword={true}
       hasForgottenPassword={true}
       promptText={"Don't have an account?"}
       promptButtonText={"Register!"}
