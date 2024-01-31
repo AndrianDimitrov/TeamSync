@@ -16,6 +16,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddDbContext<TeamSyncDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TeamSyncDbContext") ??
@@ -47,7 +48,8 @@ builder.Services.AddCors(options =>
     {
         builder.WithOrigins("http://localhost:5173")
             .AllowAnyMethod()
-            .AllowAnyHeader();
+            .AllowAnyHeader()
+            .AllowCredentials();
     });
 });
 builder.Services.Configure<JwtSection>(builder.Configuration.GetSection("JwtSection"));

@@ -1,4 +1,6 @@
 ﻿
+using Azure.Core;
+using Azure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -14,6 +16,7 @@ using TeamSync.Helpers;
 using TeamSync.Repositories.Contracts;
 using TeamSync.Responses;
 using Constants = TeamSync.Helpers.Constants;
+using Microsoft.AspNetCore.Http;
 
 namespace ServerLibrary.Repositories.Implementations
 {
@@ -21,11 +24,13 @@ namespace ServerLibrary.Repositories.Implementations
     {
         private readonly JwtSection _jwtConfig;
         private readonly TeamSyncDbContext _teamSyncDbContext;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserAccountService(IOptions<JwtSection> config, TeamSyncDbContext teamSyncDbContext)
+        public UserAccountService(IOptions<JwtSection> config, TeamSyncDbContext teamSyncDbContext, IHttpContextAccessor httpContextAccessor)
         {
             _jwtConfig = config.Value;  // Here we're storing the JwtSection object
             _teamSyncDbContext = teamSyncDbContext;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<GeneralResponse> CreateAsync(Register user)
@@ -98,6 +103,20 @@ namespace ServerLibrary.Repositories.Implementations
 
             string refreshToken = GenerateRefreshToken();
 
+            //Save tokens in a cookie
+            
+            var cookieOptions = new CookieOptions
+            {
+                Expires = DateTime.Now.AddDays(7),
+                HttpOnly = true,
+                Secure = true,
+                IsEssential = true,
+                SameSite = SameSiteMode.None
+            };
+            var context = _httpContextAccessor.HttpContext;
+            context.Response.Cookies.Append("AccessToken", jwtToken, cookieOptions);
+            context.Response.Cookies.Append("RefreshToken", refreshToken, cookieOptions);
+
             //Save the refresh token to database
             var findUser = await _teamSyncDbContext.RefreshTokenInfos.FirstOrDefaultAsync(_ => _.UserId == applicationUser.Id);
             if(findUser is not null)
@@ -110,8 +129,7 @@ namespace ServerLibrary.Repositories.Implementations
                 await AddToDatabase(new RefreshTokenInfo() { Token = refreshToken, UserId = applicationUser.Id });
             }
 
-            return new LoginResponse(true, "Login successfully", jwtToken, refreshToken);
-
+            return new LoginResponse(true, "Login successfully");
 
         }
 
@@ -181,8 +199,21 @@ namespace ServerLibrary.Repositories.Implementations
 
             updateRefreshToken.Token = refreshToken;
             await _teamSyncDbContext.SaveChangesAsync();
+            
 
-            return new LoginResponse(true, "Token refreshed successfully", jwtToken, refreshToken);
+            //update tokens in cookie
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true, // Set to true in production when using HTTPS
+                SameSite = SameSiteMode.Strict,
+            };
+            var context = _httpContextAccessor.HttpContext;
+            context.Response.Cookies.Append("AccessToken", jwtToken, cookieOptions);
+            context.Response.Cookies.Append("RefreshToken", refreshToken, cookieOptions);
+
+            return new LoginResponse(true, "Token refreshed successfully");
+
 
 
         }
