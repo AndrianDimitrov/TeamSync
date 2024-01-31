@@ -5,7 +5,6 @@ import email_icon from "../../assets/images/email.png";
 import person_icon from "../../assets/images/person.png";
 import password_icon from "../../assets/images/password.png";
 import { Link } from "react-router-dom";
-import { login, signup } from "../../services/auth";
 
 const AuthForm = ({
   title,
@@ -60,39 +59,37 @@ const AuthForm = ({
               ></input>
             </div>
           ) : null}
-          { hasEmail ? (
-          <div className="input">
-            <img className="imputIcon" src={email_icon} alt=""></img>
-            <input
-              className="imputField"
-              type="email"
-              placeholder="Email"
-              value={username}
-              onChange={handleUsernameChange}
-            ></input>
-          </div>) : null
-          }
+          {hasEmail ? (
+            <div className="input">
+              <img className="imputIcon" src={email_icon} alt=""></img>
+              <input
+                className="imputField"
+                type="email"
+                placeholder="Email"
+                value={username}
+                onChange={handleUsernameChange}
+              ></input>
+            </div>
+          ) : null}
           {hasPassword ? (
-          <div className="input">
-            <img className="imputIcon" src={password_icon} alt=""></img>
-            <input
-              className="imputField"
-              type="password"
-              placeholder={passwordPlaceholder}
-              value={password}
-              onChange={handlePasswordChange}
-            ></input>
-          </div>) : null
-}
+            <div className="input">
+              <img className="imputIcon" src={password_icon} alt=""></img>
+              <input
+                className="imputField"
+                type="password"
+                placeholder={passwordPlaceholder}
+                value={password}
+                onChange={handlePasswordChange}
+              ></input>
+            </div>
+          ) : null}
         </div>
         {hasForgottenPassword ? (
           <div className="forgottenPassword">
             Forgotten password?
-
             <Link to="/forgotten-password" className="fieldSpan">
               Click Here!
             </Link>
-
           </div>
         ) : null}
         <div className="register">
