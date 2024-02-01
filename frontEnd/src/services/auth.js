@@ -1,8 +1,10 @@
 import axios from "axios";
-
 export const login = (username, password) => {
   console.log(" Log in:", username, password);
   const configuration = {
+    headers: {
+      "Content-Type": "application/json",
+    },
     method: "post",
     url: "http://localhost:7204/authentication/login",
     data: {
@@ -18,8 +20,11 @@ export const login = (username, password) => {
 export const signup = (fullname, username, password) => {
   console.log("Sign up:", fullname, username, password);
   const configuration = {
+    headers: {
+      "Content-Type": "application/json",
+    },
     method: "post",
-    url: "http://localhost:7204/authentication/sign-up",
+    url: "http://localhost:7204/authentication/register",
     data: {
       fullname,
       email: username,
