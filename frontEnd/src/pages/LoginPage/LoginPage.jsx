@@ -1,14 +1,27 @@
 import React, { useContext } from "react";
+import { useSnackbar } from "notistack";
 import "./LoginPage.css";
 import AuthForm from "../../components/AuthForm/AuthForm";
 import { login } from "../../services/auth";
 import AuthContext from "../../store/AuthContext";
 
 const LoginPage = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const { setUser } = useContext(AuthContext);
-  const handleLogin = (username, password) => {
-    login(username, password);
-    setUser({ username });
+  const handleLogin = async (username, password) => {
+    const loginResult = await login(username, password);
+    if (loginResult.flag) {
+      enqueueSnackbar("You logged in successfully!", {
+        className: "snackbar",
+        variant: "success",
+      });
+      setUser({ username });
+    } else {
+      enqueueSnackbar("Incorrect username or password!", {
+        className: "snackbar",
+        variant: "error",
+      });
+    }
   };
   return (
     <AuthForm

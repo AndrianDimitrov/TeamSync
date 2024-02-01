@@ -1,21 +1,22 @@
-import { createPortal } from 'react-dom';
-import classes from './InfoModal.module.css';
+import { createPortal } from "react-dom";
+import style from "./InfoModal.module.css";
+import CloseIcon from "@mui/icons-material/Close";
 
-const InfoModal = ({ showModal, onClose }) => {
+const InfoModal = ({ showModal, onClose, description }) => {
   return createPortal(
     showModal ? (
-      <div className={classes['modal']}>
-        <div className={classes['backdrop']}></div>
-        <div className={classes['container']}>
-          <div className={classes['remove']} onClick={onClose}>
-            X
+      <div className={style.modal}>
+        <div className={style.container}>
+          <div className={style.remove} onClick={onClose}>
+            <CloseIcon></CloseIcon>
           </div>
+          <div className="content">{description}</div>
         </div>
       </div>
     ) : (
       <></>
     ),
-    document.getElementById('modals')
+    document.getElementById("modals")
   );
 };
 

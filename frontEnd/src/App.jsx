@@ -21,8 +21,8 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
-        <Route path="/forgotten-password" element={<ForgottenPasswordPage/>}/>
-        <Route path="/reset-password" element={<ResetPasswordPage/>}/>
+        <Route path="/forgotten-password" element={<ForgottenPasswordPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     );
