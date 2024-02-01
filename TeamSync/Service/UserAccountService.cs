@@ -107,7 +107,7 @@ namespace ServerLibrary.Repositories.Implementations
             
             var cookieOptions = new CookieOptions
             {
-                Expires = DateTime.Now.AddDays(7),
+                Expires = DateTime.Now.AddDays(1),
                 HttpOnly = true,
                 Secure = true,
                 IsEssential = true,
@@ -204,9 +204,11 @@ namespace ServerLibrary.Repositories.Implementations
             //update tokens in cookie
             var cookieOptions = new CookieOptions
             {
+                Expires = DateTime.Now.AddDays(1),
                 HttpOnly = true,
-                Secure = true, // Set to true in production when using HTTPS
-                SameSite = SameSiteMode.Strict,
+                Secure = true,
+                IsEssential = true,
+                SameSite = SameSiteMode.None
             };
             var context = _httpContextAccessor.HttpContext;
             context.Response.Cookies.Append("AccessToken", jwtToken, cookieOptions);
