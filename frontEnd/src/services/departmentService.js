@@ -1,13 +1,16 @@
-const url = "http://localhost:5173/";
+import axios from "axios";
 
-export function deleteDepartament(departamentId) {
-  return fetch(url + "/departament/delete-department{" + departamentId + "}", {
-    method: "DELETE",
-    mode: "cors",
-    headers: {
-      "content-type": "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((res) => res);
-}
+
+const url = 'http://localhost:7204/';
+
+export const deleteDepartment =  (departmentId) => {
+    try {
+      const response = axios.delete(
+        `https://localhost:7204/department/delete-department${departmentId}`
+      ).then(response => { console.log('Deleted post with ID ${postIdToDelete}')});
+
+
+    } catch (error) {
+      console.error("Error delete department", error);
+    }
+  };
