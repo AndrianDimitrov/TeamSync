@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { deleteDepartament } from "../services/DepartamentsService";
 
 const DepartmentsContext = createContext({
   departments: [],
@@ -16,6 +17,7 @@ export const DepartmentsContextProvider = ({ children }) => {
     setDepartments((prevDepartments) =>
       prevDepartments.filter((department) => department.id !== departmentId)
     );
+    deleteDepartament(departmentId);
   };
 
   return (
