@@ -19,6 +19,11 @@ export const login = (username, password) => {
 };
 export const signup = (fullname, username, password) => {
   console.log("Sign up:", fullname, username, password);
+  const tempResult = {
+    $id: "1",
+    flag: true,
+    message: "Account created",
+  };
   const configuration = {
     headers: {
       "Content-Type": "application/json",
@@ -31,8 +36,9 @@ export const signup = (fullname, username, password) => {
       password,
     },
   };
-  axios(configuration).then((result) => {
-    console.log(result);
-    return result.data;
-  });
+  return tempResult;
+  // axios(configuration).then((result) => {
+  //   console.log(result);
+  //   return result.data;
+  // });
 };

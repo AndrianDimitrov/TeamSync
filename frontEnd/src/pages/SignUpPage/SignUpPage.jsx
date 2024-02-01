@@ -1,21 +1,21 @@
 import React from "react";
 import { useSnackbar } from "notistack";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./SignUpPage.css";
 import AuthForm from "../../components/AuthForm/AuthForm";
 import { signup } from "../../services/auth";
 
 const SignUpPage = () => {
   const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
   const handleSignUp = async (fullname, username, password) => {
     const signUpResult = await signup(fullname, username, password);
-
     if (signUpResult.flag) {
-      enqueueSnackbar("You registered in successfully!", {
+      enqueueSnackbar("You registered successfully!", {
         className: "snackbar",
         variant: "success",
       });
-      return redirect("/login");
+      navigate("/login");
     } else {
       enqueueSnackbar("Sign up failed!", {
         className: "snackbar",

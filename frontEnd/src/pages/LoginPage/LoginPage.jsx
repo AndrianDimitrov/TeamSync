@@ -4,7 +4,6 @@ import "./LoginPage.css";
 import AuthForm from "../../components/AuthForm/AuthForm";
 import { login } from "../../services/auth";
 import AuthContext from "../../store/AuthContext";
-import { redirect } from "react-router";
 
 const LoginPage = () => {
   const { enqueueSnackbar } = useSnackbar();
