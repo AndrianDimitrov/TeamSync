@@ -1,35 +1,36 @@
 import axios from "axios";
 export const login = (username, password) => {
   console.log(" Log in:", username, password);
-  const tempResult = {
-    $id: "1",
-    flag: true,
-    message: "Account created",
-  };
-  const configuration = {
+  let data = JSON.stringify({
+    email: username,
+    password,
+  });
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: "https://localhost:7204/authentication/login",
     headers: {
       "Content-Type": "application/json",
     },
-    method: "post",
-    url: "http://localhost:7204/authentication/login",
-    data: {
-      email: username,
-      password,
-    },
+    data: data,
   };
-  return tempResult;
-  // return axios(configuration).then((result) => {
-  //   console.log(result);
-  //   return result.data;
-  // });
+  // return {
+  //   $id: 1,
+  //   flag: true,
+  //   message: "login successful",
+  // };
+  return axios.request(config).then((response) => {
+    console.log(JSON.stringify(response.data));
+    return response.data;
+  });
 };
+
 export const signup = (fullname, username, password) => {
   console.log("Sign up:", fullname, username, password);
-  const axios = require("axios");
   let data = JSON.stringify({
-    email: "user@example.com",
-    password: "string",
-    fullName: "string",
+    email: username,
+    password,
+    fullName,
   });
 
   let config = {
@@ -42,29 +43,8 @@ export const signup = (fullname, username, password) => {
     data: data,
   };
 
-  axios
-    .request(config)
-    .then((response) => {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  // const configuration = {
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   method: "post",
-  //   url: "http://localhost:7204/authentication/register",
-  //   data: {
-  //     fullname,
-  //     email: username,
-  //     password,
-  //   },
-  // };
-
-  // axios(configuration).then((result) => {
-  //   console.log(result);
-  //   return result.data;
-  // });
+  return axios.request(config).then((response) => {
+    console.log(JSON.stringify(response.data));
+    return response.data;
+  });
 };

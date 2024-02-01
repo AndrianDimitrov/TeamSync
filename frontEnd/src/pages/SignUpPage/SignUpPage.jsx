@@ -17,7 +17,7 @@ const SignUpPage = () => {
       });
       navigate("/login");
     } else {
-      enqueueSnackbar("Sign up failed!", {
+      enqueueSnackbar(signUpResult.message, {
         className: "snackbar",
         variant: "error",
       });
