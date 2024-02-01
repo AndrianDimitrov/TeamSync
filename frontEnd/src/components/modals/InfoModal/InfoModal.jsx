@@ -10,7 +10,7 @@ const InfoModal = ({ showModal, onClose, description }) => {
           <div className={style.remove} onClick={onClose}>
             <CloseIcon></CloseIcon>
           </div>
-          <div className="content">{description}</div>
+          <div className={style.content}>{description}</div>
         </div>
       </div>
     ) : (

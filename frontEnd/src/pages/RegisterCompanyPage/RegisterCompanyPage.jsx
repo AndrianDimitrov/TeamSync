@@ -51,22 +51,24 @@ const RegisterCompanyPage = () => {
         }}
         description={"Please fill all the inputs"}
       />
-      <div className={classes.container}>
-        <form className={classes.form} onSubmit={onSubmitHandler}>
-          <div className={classes.title}>Register a company</div>
-          <div className={`${classes["company__name"]}`}>
-            <label htmlFor="companyName">Name:</label>
-            <input
-              id="companyName"
-              type="text"
-              value={companyName}
-              onChange={onChangeHandler(setCompanyName)}
-            />
-          </div>
-          <button type="submit" className={classes.button}>
-            Register
-          </button>
-        </form>
+      <div className={classes.regCompPageBody}>
+        <div className={classes.container}>
+          <form className={classes.form} onSubmit={onSubmitHandler}>
+            <div className={classes.title}>Register a company</div>
+            <div className={`${classes["company__name"]}`}>
+              <label htmlFor="companyName">Name:</label>
+              <input
+                id="companyName"
+                type="text"
+                value={companyName}
+                onChange={onChangeHandler(setCompanyName)}
+              />
+            </div>
+            <button type="submit" className={classes.button}>
+              Register
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );

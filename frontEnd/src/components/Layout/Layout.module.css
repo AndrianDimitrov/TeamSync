@@ -27,12 +27,12 @@
 
 .nav__list-link:link,
 .nav__list-link:visited {
-  color: transparent;
+  color: rgb(53, 53, 167);
 }
 
 .nav__list-link:hover,
 .nav__list-link:active {
-  color: #5ebd78;
+  color: #2a00b7;
 }
 
 .container {
@@ -41,5 +41,5 @@
 }
 
 .active {
-  color: #5ebd78 !important;
+  color: #2a00b7 !important;
 }

@@ -11,12 +11,13 @@
   left: 0;
 }
 .container {
-  background-color: beige;
+  background-color: white;
   height: 30%;
   width: 40%;
   border-radius: 10px;
   display: flex;
   position: relative;
+  justify-content: center;
 }
 .remove {
   background-color: #42006c;
@@ -31,7 +32,11 @@
   justify-content: center;
   align-items: center;
   color: beige;
+  margin: 0.5rem;
 }
 .content {
-  font-size: 50px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
